@@ -19,7 +19,7 @@ import kotlinx.coroutines.withContext
 */
 
 
-class MyCustomLoadingView(context: Context, val blurView: BlurView) : RelativeLayout(context) {
+class MyCustomAlertBox(context: Context, val blurView: BlurView) : RelativeLayout(context) {
     var bottomPos = 0f
     var centrePos = 0f
     var animator: ObjectAnimator? = null
@@ -33,9 +33,9 @@ class MyCustomLoadingView(context: Context, val blurView: BlurView) : RelativeLa
     }
 
     private fun initialiseView() {
-        View.inflate(context, R.layout.my_loading_view_layout, this)
-        this.elevation = 85f
-        this.visibility = View.INVISIBLE
+        View.inflate(context, R.layout.alert_box_custom, this)
+        this.elevation=80f
+        
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -48,7 +48,7 @@ class MyCustomLoadingView(context: Context, val blurView: BlurView) : RelativeLa
         sizeLoaded.value = true
     }
 
-    fun showLoading() {
+    fun showDialog() {
         (context as AppCompatActivity).lifecycleScope.launch {
             if (sizeLoaded.value == true) {
                 showLoadedView()
@@ -65,15 +65,15 @@ class MyCustomLoadingView(context: Context, val blurView: BlurView) : RelativeLa
 
     private fun showLoadedView() {
         blurView.visibility=View.VISIBLE
-        this@MyCustomLoadingView.y = bottomPos
-        this@MyCustomLoadingView.visibility = View.VISIBLE
-        animator = ObjectAnimator.ofFloat(this@MyCustomLoadingView, "Y", centrePos)
+        this@MyCustomAlertBox.y = bottomPos
+        this@MyCustomAlertBox.visibility = View.VISIBLE
+        animator = ObjectAnimator.ofFloat(this@MyCustomAlertBox, "Y", centrePos)
         animator?.duration = 1000
         animator?.start()
     }
 
 
-    fun hideLoading() {
+    fun hideDialog() {
         animator = ObjectAnimator.ofFloat(this, "Y", bottomPos)
         animator?.duration = 1000
         animator?.start()
@@ -83,7 +83,7 @@ class MyCustomLoadingView(context: Context, val blurView: BlurView) : RelativeLa
             }
 
             override fun onAnimationEnd(animation: Animator?) {
-                this@MyCustomLoadingView.visibility = View.INVISIBLE
+                this@MyCustomAlertBox.visibility = View.INVISIBLE
                 blurView.visibility=View.INVISIBLE
             }
 

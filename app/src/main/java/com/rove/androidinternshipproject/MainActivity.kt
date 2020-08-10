@@ -2,6 +2,7 @@ package com.rove.androidinternshipproject
 
 import android.os.Bundle
 import android.os.Handler
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.rove.androidinternshipproject.Extensions.showToast
 import kotlinx.android.synthetic.main.activity_main.*
@@ -16,19 +17,29 @@ class MainActivity : AppCompatActivity() {
          myNetworkClass.onDataReceived = ::showData*/
         val blurView: BlurView = BlurView(this)
         rootLayout.addView(blurView)
-        val myCustomLoadingView:MyCustomLoadingView= MyCustomLoadingView(this)
-      /*  Handler().postDelayed(Runnable {
-            myCustomLoadingView.showLoading()
-        },1000)*/
-        myCustomLoadingView.showLoading()
-        rootLayout.addView(myCustomLoadingView)
-        // "Hello World".showToast(this)
-        //myCustomMethod()
+        blurView.visibility= View.INVISIBLE
+        val myCustomLoadingView:MyCustomLoadingView= MyCustomLoadingView(this,blurView)
+        val myCustomAlertBox:MyCustomAlertBox= MyCustomAlertBox(this,blurView)
+
+
+       /* Handler().postDelayed({
+            myCustomLoadingView.hideLoading()
+        },2000)*/
+        rootLayout.addView(myCustomAlertBox)
+        myCustomAlertBox.showDialog()
+        val volleyDownloadClass= VolleyDownloadClass(this)
+        volleyDownloadClass.doVolleyGetRequest("any url")
+        /*volleyDownloadClass.onSuccess={
+            it?.showToast(this)
+        }
+        volleyDownloadClass.onFailure={
+            it?.showToast(this)
+            showError()
+        }*/
+
     }
 
-    /* fun showData(data:String){
-         data.showToast(this)
-     }*/
+
 
 
 }
