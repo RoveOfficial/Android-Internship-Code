@@ -34,10 +34,9 @@ class RoveSlideUpView(context: Context,val percentageHeight:Int?=null,val childV
         innerMainRlSlideView.addView(childView)
         sizeLoaded.value=false
         elevation = 80f
-        useCompatPadding = false
-        preventCornerOverlap = false
         setContentPadding(0, 0, 0, 0)
-        clipToPadding = false
+        clipToPadding = true
+        clipChildren=true
     }
 
 

@@ -16,12 +16,12 @@ class MainActivity : MyGeneralBAseClassForActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         addCommonViews(rootLayout, this)
-        showCustomError("An error occurred")
+       // showCustomError("An error occurred")
 
-        /* val myDateView:View=View.inflate(this,R.layout.date_picker_view,null)
-         val roveSlideUpView= RoveSlideUpView(this,40,myDateView)
+         val myDateView:View=View.inflate(this,R.layout.date_picker_view,null)
+         val roveSlideUpView= RoveSlideUpView(this,null,myDateView)
          rootLayout.addView(roveSlideUpView)
-         roveSlideUpView.slideUp()*/
+         roveSlideUpView.slideUp()
 
 
         //rootLayout.addView(myCustomAlertBox)
