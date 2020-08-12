@@ -6,9 +6,9 @@ import android.view.WindowManager
 import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
-import com.rove.androidinternshipproject.UpcomingTasks.CustomAlertBoxButtonListener
-import com.rove.androidinternshipproject.UpcomingTasks.MyCustomLoadingView2
-import com.rove.androidinternshipproject.UpcomingTasks.RoveCustomAlertBox
+import com.rove.androidinternshipproject.Day_Four_Stuff.CustomAlertBoxButtonListener
+import com.rove.androidinternshipproject.Day_Four_Stuff.MyCustomLoadingView2
+import com.rove.androidinternshipproject.Day_Four_Stuff.RoveCustomAlertBox
 
 /*Created by Talha Siddiqui on 12/08/2020.
  Copyright (c) 2020 Rove. All rights reserved.
@@ -86,7 +86,7 @@ open class MyGeneralBAseClassForActivity : AppCompatActivity() {
     }
 
     fun showNetworkError() {
-        hideLoadingView()
+       // hideLoadingView()
         hideProgressBar()
         roveAlertBox?.setDialogType(true)
         roveAlertBox?.setDialogMessage("A network error just occurred. Please try again in a bit. :(")
@@ -107,7 +107,7 @@ open class MyGeneralBAseClassForActivity : AppCompatActivity() {
     }
 
     fun showUnknownError() {
-        hideLoadingView()
+        //hideLoadingView()
         hideProgressBar()
         roveAlertBox?.setDialogType(true)
         roveAlertBox?.setDialogMessage("An unknown error just occurred. Please try again in a bit. :(")
@@ -129,7 +129,7 @@ open class MyGeneralBAseClassForActivity : AppCompatActivity() {
 
 
     fun showCustomError(customError: String) {
-        hideLoadingView()
+        //hideLoadingView()
         hideProgressBar()
         roveAlertBox?.setDialogType(true)
         roveAlertBox?.setDialogMessage(customError)

@@ -4,10 +4,9 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.rove.androidinternshipproject.Day_Four_Stuff.RoveSlideUpView
 import com.rove.androidinternshipproject.Extensions.showToast
-import com.rove.androidinternshipproject.UpcomingTasks.CustomAlertBoxButtonListener
-import com.rove.androidinternshipproject.UpcomingTasks.RoveCustomAlertBox
-import com.rove.androidinternshipproject.UpcomingTasks.RoveSlideUpView
+
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.ref.WeakReference
 
@@ -16,38 +15,35 @@ class MainActivity : MyGeneralBAseClassForActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        addCommonViews(rootLayout,this)
+        addCommonViews(rootLayout, this)
+        showCustomError("An error occurred")
 
-     // showCustomError("this errro occured")
-
-        val myDateView:View=View.inflate(this,R.layout.date_picker_view,null)
-        val roveSlideUpView=RoveSlideUpView(this,40,myDateView)
-        rootLayout.addView(roveSlideUpView)
-        roveSlideUpView.slideUp()
+        /* val myDateView:View=View.inflate(this,R.layout.date_picker_view,null)
+         val roveSlideUpView= RoveSlideUpView(this,40,myDateView)
+         rootLayout.addView(roveSlideUpView)
+         roveSlideUpView.slideUp()*/
 
 
         //rootLayout.addView(myCustomAlertBox)
         //myCustomAlertBox.showDialog()
-        val volleyDownloadClass= VolleyDownloadClass(this)
-       /* volleyDownloadClass.doVolleyGetRequest("any url")
-        val weakThis = WeakReference(this)
-        volleyDownloadClass.onSuccess= { } // no capture, no leak!
+        val volleyDownloadClass = VolleyDownloadClass(this)
+        /* volleyDownloadClass.doVolleyGetRequest("any url")
+         val weakThis = WeakReference(this)
+         volleyDownloadClass.onSuccess= { } // no capture, no leak!
 
-        volleyDownloadClass.onSuccess={
-            it?.showToast(this)
-        }
-        volleyDownloadClass.onFailure={
-            it?.showToast(this)
-        }*/
-
-    }
-
-
-    private fun onResult(){
+         volleyDownloadClass.onSuccess={
+             it?.showToast(this)
+         }
+         volleyDownloadClass.onFailure={
+             it?.showToast(this)
+         }*/
 
     }
 
 
+    private fun onResult() {
+
+    }
 
 
 }
