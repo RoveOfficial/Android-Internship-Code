@@ -1,25 +1,24 @@
-package com.rove.androidinternshipproject
+package com.rove.androidinternshipproject.UpcomingTasks
 
 import android.animation.Animator
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.view.View
-import android.view.animation.Animation
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import com.rove.androidinternshipproject.BlurView
+import com.rove.androidinternshipproject.R
 
-/*Created by Talha Siddiqui on 06/08/2020.
+/*Created by Talha Siddiqui on 10/08/2020.
  Copyright (c) 2020 Rove. All rights reserved.
 */
 
 
-class MyCustomLoadingView(context: Context, val blurView: BlurView) : RelativeLayout(context) {
+open class GeneralViewBaseClass(context: Context, val childViewID: Int,  val blurView: BlurView) :
+    RelativeLayout(context) {
+
     var bottomPos = 0f
     var centrePos = 0f
     var animator: ObjectAnimator? = null
@@ -33,8 +32,12 @@ class MyCustomLoadingView(context: Context, val blurView: BlurView) : RelativeLa
     }
 
     private fun initialiseView() {
-        View.inflate(context, R.layout.my_loading_view_layout, this)
+        inflate(context, childViewID, this)
         this.elevation = 85f
+    }
+
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -47,7 +50,8 @@ class MyCustomLoadingView(context: Context, val blurView: BlurView) : RelativeLa
         sizeLoaded.value = true
     }
 
-    fun showLoading() {
+
+    fun showView() {
         if (sizeLoaded.value == true) {
             showLoadedView()
         } else {
@@ -62,15 +66,15 @@ class MyCustomLoadingView(context: Context, val blurView: BlurView) : RelativeLa
 
     private fun showLoadedView() {
         blurView.visibility = View.VISIBLE
-        this@MyCustomLoadingView.y = bottomPos
-        this@MyCustomLoadingView.visibility = View.VISIBLE
-        animator = ObjectAnimator.ofFloat(this@MyCustomLoadingView, "Y", centrePos)
+        this@GeneralViewBaseClass.y = bottomPos
+        this@GeneralViewBaseClass.visibility = View.VISIBLE
+        animator = ObjectAnimator.ofFloat(this@GeneralViewBaseClass, "Y", centrePos)
         animator?.duration = 1000
         animator?.start()
     }
 
 
-    fun hideLoading() {
+    fun hideView() {
         animator = ObjectAnimator.ofFloat(this, "Y", bottomPos)
         animator?.duration = 1000
         animator?.start()
@@ -80,7 +84,7 @@ class MyCustomLoadingView(context: Context, val blurView: BlurView) : RelativeLa
             }
 
             override fun onAnimationEnd(animation: Animator?) {
-                this@MyCustomLoadingView.visibility = View.INVISIBLE
+                this@GeneralViewBaseClass.visibility = View.INVISIBLE
                 blurView.visibility = View.INVISIBLE
             }
 

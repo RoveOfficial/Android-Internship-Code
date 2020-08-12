@@ -17,8 +17,7 @@ class VolleyDownloadClass(context: Activity) {
     private var queue: RequestQueue? = null
     private var volleyRequestTag: String? = null
     lateinit var onSuccess: ((data: String?) -> Unit)
-    lateinit var onFailure: ((error: String?) -> Unit)
-
+    lateinit var onFailure: (error: String?) -> Unit
 
     init {
         queue = Volley.newRequestQueue(context)

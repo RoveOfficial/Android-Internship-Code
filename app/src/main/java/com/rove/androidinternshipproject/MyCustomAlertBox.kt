@@ -35,7 +35,7 @@ class MyCustomAlertBox(context: Context, val blurView: BlurView) : RelativeLayou
     private fun initialiseView() {
         View.inflate(context, R.layout.alert_box_custom, this)
         this.elevation=80f
-        
+        this.clipToPadding=false
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -64,7 +64,7 @@ class MyCustomAlertBox(context: Context, val blurView: BlurView) : RelativeLayou
     }
 
     private fun showLoadedView() {
-        blurView.visibility=View.VISIBLE
+      //  blurView.visibility=View.VISIBLE
         this@MyCustomAlertBox.y = bottomPos
         this@MyCustomAlertBox.visibility = View.VISIBLE
         animator = ObjectAnimator.ofFloat(this@MyCustomAlertBox, "Y", centrePos)

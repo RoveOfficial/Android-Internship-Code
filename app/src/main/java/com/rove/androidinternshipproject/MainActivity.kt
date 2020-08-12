@@ -5,37 +5,45 @@ import android.os.Handler
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.rove.androidinternshipproject.Extensions.showToast
+import com.rove.androidinternshipproject.UpcomingTasks.CustomAlertBoxButtonListener
+import com.rove.androidinternshipproject.UpcomingTasks.RoveCustomAlertBox
+import com.rove.androidinternshipproject.UpcomingTasks.RoveSlideUpView
 import kotlinx.android.synthetic.main.activity_main.*
+import java.lang.ref.WeakReference
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : MyGeneralBAseClassForActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        /* val myNetworkClass = MyNetworkClass(this)
-         myNetworkClass.getData()
-         myNetworkClass.onDataReceived = ::showData*/
-        val blurView: BlurView = BlurView(this)
-        rootLayout.addView(blurView)
-        blurView.visibility= View.INVISIBLE
-        val myCustomLoadingView:MyCustomLoadingView= MyCustomLoadingView(this,blurView)
-        val myCustomAlertBox:MyCustomAlertBox= MyCustomAlertBox(this,blurView)
+        addCommonViews(rootLayout,this)
+
+     // showCustomError("this errro occured")
+
+        val myDateView:View=View.inflate(this,R.layout.date_picker_view,null)
+        val roveSlideUpView=RoveSlideUpView(this,40,myDateView)
+        rootLayout.addView(roveSlideUpView)
+        roveSlideUpView.slideUp()
 
 
-       /* Handler().postDelayed({
-            myCustomLoadingView.hideLoading()
-        },2000)*/
-        rootLayout.addView(myCustomAlertBox)
-        myCustomAlertBox.showDialog()
+        //rootLayout.addView(myCustomAlertBox)
+        //myCustomAlertBox.showDialog()
         val volleyDownloadClass= VolleyDownloadClass(this)
-        volleyDownloadClass.doVolleyGetRequest("any url")
-        /*volleyDownloadClass.onSuccess={
+       /* volleyDownloadClass.doVolleyGetRequest("any url")
+        val weakThis = WeakReference(this)
+        volleyDownloadClass.onSuccess= { } // no capture, no leak!
+
+        volleyDownloadClass.onSuccess={
             it?.showToast(this)
         }
         volleyDownloadClass.onFailure={
             it?.showToast(this)
-            showError()
         }*/
+
+    }
+
+
+    private fun onResult(){
 
     }
 

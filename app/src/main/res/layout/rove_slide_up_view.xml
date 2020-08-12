@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootRlSlideView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary">
+
+    <RelativeLayout
+        android:id="@+id/handleRl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_8sdp"
+        android:paddingBottom="@dimen/_10sdp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/handle"
+            android:layout_width="@dimen/_105sdp"
+            android:layout_height="@dimen/_7sdp"
+            android:layout_centerHorizontal="true"
+            app:cardCornerRadius="@dimen/_5sdp"
+            app:cardBackgroundColor="@color/colorAccent"
+            app:cardElevation="0dp"/>
+
+        <TextView
+            android:id="@+id/doneButton"
+            style="@style/TextRegularLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:text="Done"
+            android:textColor="@color/colorAccent"
+            />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/innerMainRlSlideView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/handleRl">
+
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
+

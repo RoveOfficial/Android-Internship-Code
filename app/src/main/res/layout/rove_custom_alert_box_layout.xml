@@ -1,0 +1,129 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/alert_box_cardview"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="false"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="false"
+    android:layout_marginStart="@dimen/_8sdp"
+    android:layout_marginEnd="@dimen/_8sdp"
+    android:visibility="visible"
+    app:cardBackgroundColor="@color/colorPrimary"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/_12sdp">
+
+        <ImageView
+            android:id="@+id/alert_box_imageview"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_75sdp"
+            android:layout_marginStart="@dimen/_9sdp"
+            android:layout_marginTop="@dimen/_13sdp"
+            android:src="@drawable/google_icon_high_res" />
+
+        <TextView
+            android:id="@+id/main_dialog_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/alert_box_imageview"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="@dimen/_11sdp"
+            android:layout_marginTop="@dimen/_18sdp"
+            android:layout_marginEnd="@dimen/_11sdp"
+            android:text="Test Message"
+            android:textAlignment="center"
+            android:textColor="@color/colorTertiary"
+            android:textSize="@dimen/_13ssp" />
+
+
+
+        <RelativeLayout
+            android:id="@+id/ok_button_centre_rl"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_28sdp"
+            android:layout_below="@id/main_dialog_message"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:background="@drawable/relative_layout_curved_color_accent_10dp"
+            android:elevation="@dimen/_1sdp"
+            android:visibility="invisible">
+
+            <TextView
+                android:id="@+id/ok_button_centre_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Ok"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/_12ssp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/two_button_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/main_dialog_message"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:orientation="horizontal"
+            android:visibility="invisible">
+
+
+            <RelativeLayout
+                android:id="@+id/cancel_button_left_rl"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_28sdp"
+                android:layout_weight="1"
+                android:background="@drawable/relative_layout_curved_color_accent_10dp"
+                android:elevation="@dimen/_1sdp">
+
+                <TextView
+                    android:id="@+id/cancel_button_left_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="No"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_12ssp" />
+
+            </RelativeLayout>
+
+            <Space
+                android:layout_width="@dimen/_8sdp"
+                android:layout_height="wrap_content" />
+
+            <RelativeLayout
+                android:id="@+id/ok_button_right_rl"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_28sdp"
+                android:layout_weight="1"
+                android:background="@drawable/relative_layout_curved_color_accent_10dp"
+                android:elevation="@dimen/_1sdp">
+
+                <TextView
+                    android:id="@+id/ok_button_right_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Yes"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_12ssp" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
