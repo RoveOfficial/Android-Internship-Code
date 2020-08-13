@@ -1,6 +1,7 @@
 package com.rove.androidinternshipproject
 
 import android.app.Activity
+import android.content.Context
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
@@ -12,14 +13,14 @@ import com.android.volley.toolbox.Volley
 */
 
 
-class VolleyDownloadClass(context: Activity) {
+object VolleyDownloadClassSingleton {
 
     private var queue: RequestQueue? = null
     private var volleyRequestTag: String? = null
     var onSuccess: ((data: String?) -> Unit)? = null
     var onFailure: ((error: String?) -> Unit)? = null
 
-    init {
+    fun initiliaseMyVolleyDownloadClass(context:Context){
         queue = Volley.newRequestQueue(context)
         volleyRequestTag = context.javaClass.simpleName
     }
