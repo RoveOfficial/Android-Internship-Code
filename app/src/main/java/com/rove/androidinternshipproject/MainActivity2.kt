@@ -12,7 +12,7 @@ class MainActivity2 : MyGeneralBAseClassForActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
         getDataFromServer()
-        
+
     }
 
     private fun getDataFromServer() {

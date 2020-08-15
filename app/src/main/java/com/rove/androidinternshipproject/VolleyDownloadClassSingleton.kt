@@ -8,6 +8,7 @@ import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.rove.androidinternshipproject.Day_Seven_Stuff.Resource
 import com.rove.androidinternshipproject.Day_Six_Stuff.GeneralStatusWrapperClass
 
 /*Created by Talha Siddiqui on 10/08/2020.
@@ -21,27 +22,24 @@ object VolleyDownloadClassSingleton {
     private var volleyRequestTag: String? = null
     var onSuccess: ((data: String?) -> Unit)? = null
     var onFailure: ((error: String?) -> Unit)? = null
-    val myNetowrkDataStatus=MutableLiveData<GeneralStatusWrapperClass<String>>()
-    val myGeneralStatusWrapperClass=GeneralStatusWrapperClass<String>()
+    var myNetowrkDataStatus = MutableLiveData<Resource<String>>()
 
-    fun initiliaseMyVolleyDownloadClass(context:Context){
+    fun initiliaseMyVolleyDownloadClass(context: Context) {
         queue = Volley.newRequestQueue(context)
         volleyRequestTag = context.javaClass.simpleName
-        myNetowrkDataStatus.value=myGeneralStatusWrapperClass
     }
 
     fun doVolleyGetRequest(url: String) {
+        myNetowrkDataStatus.value = Resource.Loading<String>()
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             Response.Listener<String?> {
-                onSuccess?.invoke(it)
-                myGeneralStatusWrapperClass.status=GeneralStatusWrapperClass.Status.SUCCESS
-                myNetowrkDataStatus.value=myGeneralStatusWrapperClass
+               // onSuccess?.invoke(it)
+                myNetowrkDataStatus.value=Resource.Success(it.toString())
 
             }, Response.ErrorListener {
                 onFailure?.invoke(it.message)
-                myGeneralStatusWrapperClass.status=GeneralStatusWrapperClass.Status.ERROR
-                myNetowrkDataStatus.value=myGeneralStatusWrapperClass
+                myNetowrkDataStatus.value=Resource.Error(it.message.toString())
             })
         stringRequest.setShouldCache(false)
         stringRequest.tag = volleyRequestTag

@@ -12,12 +12,15 @@ class MainActivity3 : AppCompatActivity() {
         setContentView(R.layout.activity_main3)
         val myShapes:List<Shape> = arrayListOf(Shape("sqaure","blue"),Shape("rectangle","yellow"),Shape("sqaure","red"))
         val persons:List<Person> = arrayListOf(Person("sqaure",15),Person("rectangle",20),Person("sqaure",30))
-        myShapes.myShapeFilter { it.name == "square" }
+        //myShapes.myShapeFilter { it.name == "square" }
+       myShapes.myShapeFilter(::myShapeFilterFunction)
         persons.myShapeFilter { it.age > 10 }
         val myLiveData= MutableLiveData<Person>()
     }
 
-
+private fun myShapeFilterFunction(shape:Shape):Boolean{
+        return shape.name == "square"
+    }
 
     class Shape(val name:String, val color:String){
 
@@ -28,10 +31,10 @@ class MainActivity3 : AppCompatActivity() {
     }
 
 
-    fun <MyType> List<MyType>.myShapeFilter(filterFunction: (MyType) -> Boolean) : List<MyType>{
+    fun <MyType> List<MyType>.myShapeFilter(filterFunction: (myType:MyType) -> Boolean) : List<MyType>{
         val resultList = ArrayList<MyType>()
         for(item in this){
-            if(filterFunction(item)){
+            if(filterFunction.invoke(item)){
                 resultList.add(item)
             }
         }
