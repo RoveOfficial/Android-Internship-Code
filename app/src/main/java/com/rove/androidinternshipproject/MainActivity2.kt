@@ -18,7 +18,7 @@ class MainActivity2 : MyGeneralBAseClassForActivity() {
     private fun getDataFromServer() {
         VolleyDownloadClassSingleton.doVolleyGetRequest("asdgfasgf")
 
-        VolleyDownloadClassSingleton.myNetowrkDataStatus.observe(this, Observer {
+       /* VolleyDownloadClassSingleton.myNetowrkDataStatus.observe(this, Observer {
             if (it.status == GeneralStatusWrapperClass.Status.LOADING) {
                 showLoadingView()
             } else if (it.status == GeneralStatusWrapperClass.Status.SUCCESS) {
@@ -28,7 +28,7 @@ class MainActivity2 : MyGeneralBAseClassForActivity() {
                 hideLoadingView()
                 //show error
             }
-        })
+        })*/
 
     }
 

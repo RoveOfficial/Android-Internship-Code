@@ -16,7 +16,7 @@ class TempActivity : MyGeneralBAseClassForActivity() {
         addCommonViews(rootLayout,this)
         fetchUserData()
         userData.observe(this, Observer {
-           when(it){
+           val a = when(it){
                is Resource.Success -> {
                    hideLoadingView()
                    showCustomError(it.data!!)
@@ -48,5 +48,6 @@ class TempActivity : MyGeneralBAseClassForActivity() {
     }
 
 }
+
 
 

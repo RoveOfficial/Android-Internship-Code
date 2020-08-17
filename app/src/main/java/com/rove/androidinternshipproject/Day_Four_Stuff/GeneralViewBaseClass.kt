@@ -3,6 +3,7 @@ package com.rove.androidinternshipproject.Day_Four_Stuff
 import android.animation.Animator
 import android.animation.ObjectAnimator
 import android.content.Context
+import android.util.Log
 import android.view.View
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
@@ -42,12 +43,16 @@ open class GeneralViewBaseClass(context: Context, val childViewID: Int,  val blu
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
-        val parentHeight = (this.parent as View).height
-        bottomPos = parentHeight.toFloat()
-        centrePos = (parentHeight / 2).toFloat() - (this.height / 2)
-        this.y = bottomPos
-        this.visibility = View.INVISIBLE
-        sizeLoaded.value = true
+        if(sizeLoaded.value==false){
+            val parentHeight = (this.parent as View).height
+            Log.i("psoop00",parentHeight.toString())
+            Log.i("psoop00",this.height.toString())
+            bottomPos = parentHeight.toFloat()
+            centrePos = (parentHeight / 2).toFloat() - (this.height / 2)
+            this.y = bottomPos
+            this.visibility = View.INVISIBLE
+            sizeLoaded.value = true
+        }
     }
 
 
@@ -71,6 +76,7 @@ open class GeneralViewBaseClass(context: Context, val childViewID: Int,  val blu
         animator = ObjectAnimator.ofFloat(this@GeneralViewBaseClass, "Y", centrePos)
         animator?.duration = 1000
         animator?.start()
+        Log.i("psoop00","ANIMATING UP")
     }
 
 

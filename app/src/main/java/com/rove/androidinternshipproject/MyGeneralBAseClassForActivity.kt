@@ -35,8 +35,8 @@ open class MyGeneralBAseClassForActivity : AppCompatActivity() {
     }
 
     private fun addAlertBox() {
-        roveAlertBox = RoveCustomAlertBox(context, roveBlurView)
-        rootLayout!!.addView(roveAlertBox)
+            roveAlertBox = RoveCustomAlertBox(context, roveBlurView)
+            rootLayout!!.addView(roveAlertBox)
     }
 
     private fun addLoadingView() {
@@ -47,6 +47,7 @@ open class MyGeneralBAseClassForActivity : AppCompatActivity() {
     private fun addBlurView() {
         roveBlurView = BlurView(this)
         rootLayout!!.addView(roveBlurView)
+        roveBlurView.visibility=View.INVISIBLE
     }
 
 
@@ -108,11 +109,11 @@ open class MyGeneralBAseClassForActivity : AppCompatActivity() {
 
     fun showUnknownError() {
         //hideLoadingView()
-        hideProgressBar()
-        roveAlertBox?.setDialogType(true)
-        roveAlertBox?.setDialogMessage("An unknown error just occurred. Please try again in a bit. :(")
-        roveAlertBox?.showView()
-        roveAlertBox?.customAlertBoxButtonListener = object : CustomAlertBoxButtonListener {
+        //hideProgressBar()
+        roveAlertBox!!.setDialogType(true)
+        roveAlertBox!!.setDialogMessage("An unknown error just occurred. Please try again in a bit. :(")
+        roveAlertBox!!.showView()
+        roveAlertBox!!.customAlertBoxButtonListener = object : CustomAlertBoxButtonListener {
             override fun onLeftButtonClick() {
 
             }
@@ -130,7 +131,7 @@ open class MyGeneralBAseClassForActivity : AppCompatActivity() {
 
     fun showCustomError(customError: String) {
         //hideLoadingView()
-        hideProgressBar()
+        //hideProgressBar()
         roveAlertBox?.setDialogType(true)
         roveAlertBox?.setDialogMessage(customError)
         roveAlertBox?.showView()
