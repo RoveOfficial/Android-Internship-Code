@@ -8,7 +8,7 @@ package com.rove.androidinternshipproject.MVVM
 object DependencyInjectorUtility {
 
     fun getUserViewModelFactory():UserViewModelFactoryClass{
-        return UserViewModelFactoryClass(FakeUserRepository() as UserRepositoryInterface)
+        return UserViewModelFactoryClass(UserRepository() as UserRepositoryInterface)
     }
 
 }

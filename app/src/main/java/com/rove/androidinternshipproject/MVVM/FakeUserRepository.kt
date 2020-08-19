@@ -7,7 +7,7 @@ import kotlinx.coroutines.delay
  Copyright (c) 2020 Rove. All rights reserved.
 */
 
-
+//Can be used either for Testing or for Mock Data
 class FakeUserRepository:UserRepositoryInterface {
 
     override suspend fun getUserData(): Resource<UserModel> {

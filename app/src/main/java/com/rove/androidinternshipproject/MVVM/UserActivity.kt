@@ -33,6 +33,7 @@ class UserActivity : MyGeneralBAseClassForActivity() {
                     showLoadingView()
                 }
                 is Resource.Error -> {
+                    hideLoadingView()
                     showCustomError(it.message!!)
                 }
             }
